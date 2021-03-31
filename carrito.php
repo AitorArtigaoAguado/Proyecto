@@ -72,7 +72,6 @@ if (! isset($_SESSION["login"])) {
 	<div style="margin-top: 110px">
 		<div style="margin-top: 55px; margin-right: 20px; margin-bottom: 5px;">
 			<?php
-session_start();
 if (! isset($_SESSION["login"])) {
     echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
 } else {

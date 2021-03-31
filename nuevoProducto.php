@@ -21,6 +21,15 @@
 <!-- Fin Bootstrap -->
 </head>
 <body style="background-color: #F7F7F7;">
+<?php
+// Evita entrar a funcion de administrador a no admin
+session_start();
+if (! isset($_SESSION["login"])) {
+    header("Location: index.php");
+}else if($_SESSION["admin"] != 1){
+    header("Location: index.php");
+}
+?>
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
 		src="/imagenes/supermercado.jpg" style="width: 100%; height: 50">
@@ -64,7 +73,6 @@
 	<div style="margin-top: 110px">
 		<div style="margin-top: 55px; margin-right: 20px; margin-bottom: 5px;">
 			<?php
-session_start();
 if (! isset($_SESSION["login"])) {
     echo "<div style='text-align:right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
 } else {
