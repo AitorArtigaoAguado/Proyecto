@@ -17,11 +17,13 @@ $categoria = $_POST["categoria"];
 $precio = $_POST["precio"];
 $stock = $_POST["stock"];
 
+move_uploaded_file($imagen, "/Proyecto/imagenes/$imagen");
+
 $sql = "INSERT INTO productos(nombre, categoria, stock, imagen, precio)
 VALUES('" . $producto . "'," . $categoria . "," . $stock . ",'" . $imagen . "'," . $precio . ")";
 
-if($conn->query($sql)){
+if ($conn->query($sql)) {
     header("Location: nuevoProducto.php?exito=true");
-}else{
+} else {
     header("Location: nuevoProducto.php?error=true");
 }

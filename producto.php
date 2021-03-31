@@ -75,7 +75,7 @@ if (! isset($_SESSION["login"])) {
 }
 ?>
 	</div>
-		<div style="margin-top: 50px" class="container">
+		<div class="container">
 			<table width='100%'>
 		<?php
 
