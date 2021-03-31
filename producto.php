@@ -121,6 +121,10 @@ if ($resultado->num_rows > 0) {
                 echo "<input onclick='popup()' class='btn btn-secondary btn-lg' type='submit' value='Añadir al carro'>";
                 echo "</form></h5></td></tr>";
             }
+        }else{
+            if ($row["stock"] == 0) {
+                echo "<h3 style='color:red;'>AGOTADO</h3>";
+            }
         }
     }
 }

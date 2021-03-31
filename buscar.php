@@ -71,12 +71,12 @@
 			<?php
 session_start();
 if (! isset($_SESSION["login"])) {
-    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
+    echo "<div style='text-align:right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
 } else {
     if ($_SESSION["admin"] != 0) {
         echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10;'>+ Añadir producto</a>";
     }
-    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='carrito.php'>Carrito</a></div>";
+    echo "<div style='text-align:right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='carrito.php'>Carrito</a></div>";
 }
 ?>
 		</div>
@@ -114,6 +114,8 @@ if ($resultado->num_rows > 0) {
         $imagenes[$a] = $row["imagen"];
         $a ++;
     }
+}else{
+    echo "<h4 style='margin-left:50px;'>No se han encontrado resultados</h4>";
 }
 
 // Mostrar los resultados
