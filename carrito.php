@@ -21,6 +21,14 @@
 <!-- Fin Bootstrap -->
 </head>
 <body style="background-color: #F7F7F7;" onload="intervalo()">
+<?php
+// Evita entrar al carrito a alguien no loggeado
+session_start();
+if (! isset($_SESSION["login"])) {
+    header("Location: index.php");
+    exit();
+}
+?>
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
 		src="/imagenes/supermercado.jpg" style="width: 100%; height: 50">
@@ -128,7 +136,7 @@ echo "<tr><td/><td/><td/><td/><td><strong>Total:</strong></td><td>" . $suma . " 
 $conn->close();
 
 // Elimina el contenido de carrito cada 24h
-if(!isset($_COOKIE["comprar"])){
+if (! isset($_COOKIE["comprar"])) {
     header("Location: comprar.php");
 }
 ?>
