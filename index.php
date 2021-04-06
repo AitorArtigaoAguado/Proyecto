@@ -57,7 +57,8 @@
 						<span class="sr-only">(current)</span>
 				</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0" action="buscar.php" method="post">
+			<form class="form-inline my-2 my-lg-0" action="buscar.php"
+				method="post">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Buscar" aria-label="Buscar" name="buscar">
 				<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
@@ -126,5 +127,48 @@ $conn->close();
 		</table>
 	</div>
 	<!-- Fin contenido -->
+	<!-- Footer -->
+	<footer class="bg-dark text-center text-white">
+		<!-- Grid container -->
+		<div class="container p-4 pb-0">
+			<!-- Section: Social media -->
+			<section class="mb-4">
+				<!-- Facebook -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-facebook-f"></i></a>
+
+				<!-- Twitter -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-twitter"></i></a>
+
+				<!-- Google -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-google"></i></a>
+
+				<!-- Instagram -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-instagram"></i></a>
+
+				<!-- Linkedin -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-linkedin-in"></i></a>
+
+				<!-- Github -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-github"></i></a>
+			</section>
+			<!-- Section: Social media -->
+		</div>
+		<!-- Grid container -->
+
+		<!-- Copyright -->
+		<div class="text-center p-3"
+			style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2020 Copyright: <a class="text-white"
+				href="https://mdbootstrap.com/">Supermercado</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<!-- Footer -->
 </body>
 </html>
