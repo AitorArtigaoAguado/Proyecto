@@ -104,7 +104,7 @@ if ($resultado->num_rows > 0) {
     while ($row = $resultado->fetch_assoc()) {
         $_SESSION["producto"] = $id;
         echo "<tr>";
-        echo "<td style='text-align: center' width='50%'><img alt='PRODUCTO.JPG' width='300' heigth='300' src='/imagenes/" . $row["imagen"] . "'></td>";
+        echo "<td style='text-align: center' width='50%'><img alt='PRODUCTO.JPG' width='300' heigth='300' src='imagenes/" . $row["imagen"] . "'></td>";
         echo "<td style='margin-left:100px;' width='50%'><h4><strong>Nombre del producto: </strong>" . $row["producto"] . "<br><br>";
         echo "<strong>Categoría: </strong>" . $row["categoria"] . "<br><br>";
         echo "<strong>Precio: </strong>" . $row["precio"] . " &euro;<br><br>";

@@ -83,7 +83,8 @@ if (! isset($_SESSION["login"])) {
 		<div class="container"
 			style="max-width: 700px; margin-left: auto; margin-right: auto; border: 1px solid black; border-radius: 5px; background-color: white;">
 			<form action="addProducto.php" method="post"
-				style="margin-top: 15px;">
+				style="margin-top: 15px;" enctype="multipart/form-data">
+				<input type="hidden" name="MAX_FILE_SIZE" value="512000" />
 				<label for="imagen">Imagen:</label> <input type="file" name="imagen">
 				<br> <br> <label for="producto">Producto:</label> <input
 					class="form-control" type="text" name="producto" required><br> <br> <label
@@ -108,7 +109,7 @@ if (! isset($_SESSION["login"])) {
 if (isset($_GET["exito"])) {
     echo "<h3 style='color: green;'>Se ha registrado el producto</h3>";
 } else if (isset($_GET["error"])) {
-    echo "<h3 style='color: red;'>Se ha registrado el producto</h3>";
+    echo "<h3 style='color: red;'>Ha ocurrido un error</h3>";
 }
 ?>
 		</div>

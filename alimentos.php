@@ -116,7 +116,7 @@ if ($resultado->num_rows > 0) {
 // Mostrar los resultados
 echo "<tr>";
 for ($i = 1; $i < $a; $i ++) {
-    echo "<td><a href='producto.php?id=" . $id[$i] . "'><img alt='PRODUCTO.JPG' style='width: 100px; height: 100px;' src='/imagenes/" . $imagenes[$i] . "'><br>" . $productos[$i] . "</a></td>";
+    echo "<td><a href='producto.php?id=" . $id[$i] . "'><img alt='PRODUCTO.JPG' style='width: 100px; height: 100px;' src='imagenes/" . $imagenes[$i] . "'><br>" . $productos[$i] . "</a></td>";
     if ($i % 5 == 0 && $i != 0) {
         echo "</tr>";
     }
