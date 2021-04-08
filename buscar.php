@@ -7,6 +7,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css"
+	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	crossorigin="anonymous"></script>
@@ -57,7 +59,8 @@
 						<span class="sr-only">(current)</span>
 				</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0" action="buscar.php" method="post">
+			<form class="form-inline my-2 my-lg-0" action="buscar.php"
+				method="post">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Buscar" aria-label="Buscar" name="buscar">
 				<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
@@ -95,6 +98,9 @@ if (! $conn) {
     die("Ha ocurrido un error");
 }
 
+if(!isset($_POST["buscar"])){
+    header("Location: index.php");
+}
 // Recoger los datos
 $busqueda = $_POST["buscar"];
 
@@ -114,14 +120,14 @@ if ($resultado->num_rows > 0) {
         $imagenes[$a] = $row["imagen"];
         $a ++;
     }
-}else{
+} else {
     echo "<h4 style='margin-left:50px;'>No se han encontrado resultados</h4>";
 }
 
 // Mostrar los resultados
 echo "<tr>";
 for ($i = 1; $i < $a; $i ++) {
-    echo "<td><a href='producto.php?id=" . $id[$i] . "'><img alt='PRODUCTO.JPG' style='width: 100px; height: 100px;' src='/imagenes/" . $imagenes[$i] . "'><br>" . $productos[$i] . "</a></td>";
+    echo "<td><a href='producto.php?id=" . $id[$i] . "'><img alt='PRODUCTO.JPG' style='width: 100px; height: 100px;' src='imagenes/" . $imagenes[$i] . "'><br>" . $productos[$i] . "</a></td>";
     if ($i % 5 == 0 && $i != 0) {
         echo "</tr>";
     }
@@ -132,5 +138,47 @@ $conn->close();
 		</table>
 	</div>
 	<!-- Fin contenido -->
+	<!-- Footer -->
+	<footer style="margin-top: 350px;" class="bg-dark text-center text-white">
+		<!-- Grid container -->
+		<div class="container p-4 pb-0">
+			<!-- Section: Social media -->
+			<section class="mb-4">
+				<!-- Facebook -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-facebook-f"></i></a>
+
+				<!-- Twitter -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-twitter"></i></a>
+
+				<!-- Google -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-google"></i></a>
+
+				<!-- Instagram -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-instagram"></i></a>
+
+				<!-- Linkedin -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-linkedin-in"></i></a>
+
+				<!-- Github -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-github"></i></a>
+			</section>
+			<!-- Section: Social media -->
+		</div>
+		<!-- Grid container -->
+
+		<!-- Copyright -->
+		<div class="text-center p-3"
+			style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2021 Copyright: <a class="text-white" href="#">Supermercado</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<!-- Footer -->
 </body>
 </html>

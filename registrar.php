@@ -7,6 +7,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css"
+	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	crossorigin="anonymous"></script>
@@ -103,5 +105,47 @@ if (isset($_GET["error"])) {
 		<a href="index.php"><h5><-- Atrás</h5></a>
 	</div>
 	<!-- Fin contenido -->
+	<!-- Footer -->
+	<footer class="bg-dark text-center text-white">
+		<!-- Grid container -->
+		<div class="container p-4 pb-0">
+			<!-- Section: Social media -->
+			<section class="mb-4">
+				<!-- Facebook -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-facebook-f"></i></a>
+
+				<!-- Twitter -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-twitter"></i></a>
+
+				<!-- Google -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-google"></i></a>
+
+				<!-- Instagram -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-instagram"></i></a>
+
+				<!-- Linkedin -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-linkedin-in"></i></a>
+
+				<!-- Github -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-github"></i></a>
+			</section>
+			<!-- Section: Social media -->
+		</div>
+		<!-- Grid container -->
+
+		<!-- Copyright -->
+		<div class="text-center p-3"
+			style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2021 Copyright: <a class="text-white" href="#">Supermercado</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<!-- Footer -->
 </body>
 </html>
