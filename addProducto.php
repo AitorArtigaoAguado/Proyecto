@@ -71,3 +71,4 @@ if ($conn->query($sql)) {
 } else {
     header("Location: nuevoProducto.php?error=true");
 }
+$conn->close();

@@ -100,3 +100,4 @@ WHERE id = $id";
         header("Location: editarProducto.php?id=$id&error=true");
     }
 }
+$conn->close();

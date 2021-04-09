@@ -189,6 +189,7 @@ if (isset($_GET["exito"])) {
 } else if (isset($_GET["error"])) {
     echo "<h3 style='color: red;'>Ha ocurrido un error</h3>";
 }
+$conn->close();
 ?>
 		</div>
 		<div class="container">

@@ -84,7 +84,7 @@ if (! isset($_SESSION["login"])) {
 ?>
 	</div>
 		<div class="container">
-			<table width='100%'>
+			<table width='100%' style="margin-top: 40px;">
 		<?php
 
 // Conexion con la base de datos

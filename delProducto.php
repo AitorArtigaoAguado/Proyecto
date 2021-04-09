@@ -19,3 +19,5 @@ $sql= "DELETE FROM productos where id = $id";
 if ($conn->query($sql)) {
     header("Location: index.php");
 } 
+
+$conn->close();
