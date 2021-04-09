@@ -86,7 +86,7 @@ if (! isset($_SESSION["login"])) {
 			style="max-width: 700px; margin-left: auto; margin-right: auto; border: 1px solid black; border-radius: 5px; background-color: white;">
 			<form action="addProducto.php" method="post"
 				style="margin-top: 15px;" enctype="multipart/form-data">
-				<input type="hidden" name="MAX_FILE_SIZE" value="512000" /> <label
+				<input type="hidden" name="MAX_FILE_SIZE" value="5120000" /> <label
 					for="imagen">Imagen:</label> <input type="file" name="imagen"> <br>
 				<br> <label for="producto">Producto:</label> <input
 					class="form-control" type="text" name="producto" required><br> <br>

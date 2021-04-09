@@ -67,11 +67,17 @@
 		<div style="margin-top: 55px; margin-right: 20px; margin-bottom: 5px;">
 			<?php
 session_start();
+
+// Recogida de datos GET
+$id = $_GET["id"];
+
 if (! isset($_SESSION["login"])) {
     echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
 } else {
     if ($_SESSION["admin"] != 0) {
-        echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10;'>+ Añadir producto</a>";
+        echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10;'>+ Añadir producto</a> | ";
+        echo "<a href='editarProducto.php?id=" . $id . "'>Editar producto</a> | ";
+        echo "<a href='delProducto.php?id=$id'>Eliminar Producto</a>";
     }
     echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='carrito.php'>Carrito</a></div>";
 }
@@ -80,9 +86,6 @@ if (! isset($_SESSION["login"])) {
 		<div class="container">
 			<table width='100%'>
 		<?php
-
-// Recogida de datos GET
-$id = $_GET["id"];
 
 // Conexion con la base de datos
 $user = "root";
@@ -136,7 +139,6 @@ $conn->close();
 			<br> <br> <a href="index.php"><h5><-- Atrás</h5></a>
 		</div>
 	</div>
-	<div id="vacio"></div>
 	<!-- Fin contenido -->
 	<!-- Footer -->
 	<footer class="bg-dark text-center text-white">

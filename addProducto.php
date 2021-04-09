@@ -39,7 +39,7 @@ if (file_exists($target_file)) {
 }
 
 // Comprobar el tamaño de la imagen
-if ($_FILES["imagen"]["size"] > 500000) {
+if ($_FILES["imagen"]["size"] > 5000000) {
     header("Location: nuevoProducto.php?error=true");
     $uploadOk = 0;
 }
