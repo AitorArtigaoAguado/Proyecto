@@ -23,6 +23,12 @@
 <!-- Fin Bootstrap -->
 </head>
 <body style="background-color: #F7F7F7;">
+<?php
+session_start();
+if (! isset($_SESSION["login"])) {
+    header("Location: index.php");
+}
+?>
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
 		src="/imagenes/supermercado.jpg" style="width: 100%; height: 50">
@@ -79,13 +85,11 @@ if (! isset($_SESSION["login"])) {
     if ($_SESSION["admin"] != 0) {
         echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10;'>+ Añadir producto</a>";
     }
-    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='perfil.php'>Perfil</a> | <a href='carrito.php'>Carrito</a></div>";
+    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='carrito.php'>Carrito</a></div>";
 }
 ?>
-		</div>
-		<table class="table" style="width: 100%; text-align: center;">
-			<?php
-
+			<table class="table" style="width: 100%; text-align: center;">
+<?php
 // Conexion con la base de datos
 $user = "root";
 $pass = "";
@@ -98,39 +102,17 @@ if (! $conn) {
     die("Ha ocurrido un error");
 }
 
-// Query
-$sql = "SELECT * FROM productos";
+$sql = "SELECT * FROM usuarios WHERE id=" . $_SESSION["login"];
 $resultado = $conn->query($sql);
-
-// Recoger los resultados
-$productos = array();
-$imagenes = array();
-$id = array();
-$a = 1;
-if ($resultado->num_rows > 0) {
-    while ($row = $resultado->fetch_assoc()) {
-        $id[$a] = $row["id"];
-        $productos[$a] = $row["nombre"];
-        $imagenes[$a] = $row["imagen"];
-        $a ++;
-    }
-}
-
-// Mostrar los resultados
-echo "<tr>";
-for ($i = 1; $i < $a; $i ++) {
-    echo "<td><a href='producto.php?id=" . $id[$i] . "'><img alt='PRODUCTO.JPG' style='width: 100px; height: 100px;' src='imagenes/" . $imagenes[$i] . "'><br>" . $productos[$i] . "</a></td>";
-    if ($i % 5 == 0 && $i != 0) {
-        echo "</tr>";
-    }
-}
-$conn->close();
 ?>
-		</table>
+			</table>
+
+		</div>
 	</div>
 	<!-- Fin contenido -->
 	<!-- Footer -->
-	<footer style="margin-top: 250px;" class="bg-dark text-center text-white">
+	<footer style="margin-top: 250px;"
+		class="bg-dark text-center text-white">
 		<!-- Grid container -->
 		<div class="container p-4 pb-0">
 			<!-- Section: Social media -->
@@ -166,8 +148,7 @@ $conn->close();
 		<!-- Copyright -->
 		<div class="text-center p-3"
 			style="background-color: rgba(0, 0, 0, 0.2);">
-			© 2021 Copyright: <a class="text-white"
-				href="#">Supermercado</a>
+			© 2021 Copyright: <a class="text-white" href="#">Supermercado</a>
 		</div>
 		<!-- Copyright -->
 	</footer>
