@@ -32,11 +32,11 @@ if (isset($_SESSION["login"])) {
 }
 ?>
 	<!-- Cabecera -->
-	<img alt="SUPERMERCADO.JPG" src="/imagenes/supermercado.jpg"
-		style="width: 100%; height: 50">
+	<img class="fixed-top" alt="SUPERMERCADO.JPG"
+		src="imagenes/supermercado.png" style="width: 100%; height: 100">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
-		style="margin-top: 50px">
-		<a class="navbar-brand" href="index.php"><strong>Supermercado</strong></a>
+		style="margin-top: 100px">
+		<a class="navbar-brand" href="index.php"><strong>Minimarket</strong></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -67,12 +67,18 @@ if (isset($_SESSION["login"])) {
 						<span class="sr-only">(current)</span>
 				</a></li>
 			</ul>
+			<form class="form-inline my-2 my-lg-0" action="buscar.php"
+				method="post">
+				<input class="form-control mr-sm-2" type="search"
+					placeholder="Buscar" aria-label="Buscar" name="buscar">
+				<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+			</form>
 		</div>
 	</nav>
 	<!-- Fin cabecera -->
 	<!-- Contenido -->
 	<div class="container"
-		style="margin-top: 120px; max-width: 500px; margin-left: auto; margin-right: auto; border: 1px solid black; border-radius: 5px; background-color: white;">
+		style="margin-top: 170px; max-width: 500px; margin-left: auto; margin-right: auto; border: 1px solid black; border-radius: 5px; background-color: white;">
 		<form action="entrar.php" method="post" style="margin-top: 15px;">
 			<h4>
 				<label for="usuario">Usuario:</label> <input class="form-control"

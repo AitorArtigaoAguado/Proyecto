@@ -25,10 +25,10 @@
 <body style="background-color: #F7F7F7;">
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
-		src="/imagenes/supermercado.jpg" style="width: 100%; height: 50">
+		src="imagenes/supermercado.png" style="width: 100%; height: 100">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
-		style="margin-top: 50px">
-		<a class="navbar-brand" href="index.php"><strong>Supermercado</strong></a>
+		style="margin-top: 100px">
+		<a class="navbar-brand" href="index.php"><strong>Minimarket</strong></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -59,11 +59,17 @@
 						<span class="sr-only">(current)</span>
 				</a></li>
 			</ul>
+			<form class="form-inline my-2 my-lg-0" action="buscar.php"
+				method="post">
+				<input class="form-control mr-sm-2" type="search"
+					placeholder="Buscar" aria-label="Buscar" name="buscar">
+				<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+			</form>
 		</div>
 	</nav>
 	<!-- Fin cabecera -->
 	<!-- Contenido -->
-	<div style="margin-top: 110px">
+	<div style="margin-top: 160px">
 		<div style="margin-top: 55px; margin-right: 20px; margin-bottom: 5px;">
 			<?php
 session_start();
@@ -77,7 +83,7 @@ if (! isset($_SESSION["login"])) {
     if ($_SESSION["admin"] != 0) {
         echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10;'>+ Añadir producto</a> | ";
         echo "<a href='editarProducto.php?id=" . $id . "'>Editar producto</a> | ";
-        echo "<a href='delProducto.php?id=$id'>Eliminar Producto</a>";
+        echo "<a href='#' onclick='confirmSubmit(" . $id . ");'>Eliminar Producto</a>";
     }
     echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='carrito.php'>Carrito</a></div>";
 }
@@ -190,6 +196,16 @@ $conn->close();
 			if(cantidad != ""){
 				alert("Se ha añadido al carrito con éxito.");
 			}
+		}
+		
+		//Función de confirmación para eliminar producto
+		function confirmSubmit(id)
+		{
+		var agree=confirm("Deseas eliminar este producto?");
+		if (agree)
+			window.location.href = "delProducto.php?id="+id;
+		else
+			window.location.href = "producto.php?id="+id;
 		}
 	</script>
 	<!-- Fin Scripts -->

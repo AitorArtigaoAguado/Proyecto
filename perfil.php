@@ -31,10 +31,10 @@ if (! isset($_SESSION["login"])) {
 ?>
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
-		src="/imagenes/supermercado.jpg" style="width: 100%; height: 50">
+		src="imagenes/supermercado.png" style="width: 100%; height: 100">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
-		style="margin-top: 50px">
-		<a class="navbar-brand" href="index.php"><strong>Supermercado</strong></a>
+		style="margin-top: 100px">
+		<a class="navbar-brand" href="index.php"><strong>Minimarket</strong></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -75,7 +75,7 @@ if (! isset($_SESSION["login"])) {
 	</nav>
 	<!-- Fin cabecera -->
 	<!-- Contenido -->
-	<div style="margin-top: 110px">
+	<div style="margin-top: 160px">
 		<div style="margin-top: 55px; margin-right: 20px; margin-bottom: 5px;">
 			<?php
 session_start();
