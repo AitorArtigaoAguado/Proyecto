@@ -25,7 +25,7 @@
 <body style="background-color: #F7F7F7;">
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
-		src="imagenes/supermercado.png" style="width: 100%; height: 100">
+		src="imagenes/supermercado.jpg" style="width: 100%; height: 100">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
 		style="margin-top: 100px">
 		<a class="navbar-brand" href="index.php"><strong>Minimarket</strong></a>
@@ -78,14 +78,16 @@ session_start();
 $id = $_GET["id"];
 
 if (! isset($_SESSION["login"])) {
-    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
+    echo "<div style='text-align:right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
 } else {
     if ($_SESSION["admin"] != 0) {
+        echo "<div style='float:left;'>";
         echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10;'>+ Añadir producto</a> | ";
         echo "<a href='editarProducto.php?id=" . $id . "'>Editar producto</a> | ";
         echo "<a href='#' onclick='confirmSubmit(" . $id . ");'>Eliminar Producto</a>";
+        echo "</div>";
     }
-    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='carrito.php'>Carrito</a></div>";
+    echo "<div style='text-align:right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='perfil.php'>Perfil</a> | <a href='carrito.php'>Carrito</a></div>";
 }
 ?>
 	</div>
@@ -142,12 +144,13 @@ if ($resultado->num_rows > 0) {
 $conn->close();
 ?>
 		</table>
-			<br> <br> <a href="index.php"><h5><-- Atrás</h5></a>
+			<br> <br> <br> <br> <a href="index.php"><h5><-- Atrás</h5></a>
 		</div>
 	</div>
 	<!-- Fin contenido -->
 	<!-- Footer -->
-	<footer class="bg-dark text-center text-white">
+	<footer class="bg-dark text-center text-white"
+		style="margin-top: 150px;">
 		<!-- Grid container -->
 		<div class="container p-4 pb-0">
 			<!-- Section: Social media -->

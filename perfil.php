@@ -31,7 +31,7 @@ if (! isset($_SESSION["login"])) {
 ?>
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
-		src="imagenes/supermercado.png" style="width: 100%; height: 100">
+		src="imagenes/supermercado.jpg" style="width: 100%; height: 100">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
 		style="margin-top: 100px">
 		<a class="navbar-brand" href="index.php"><strong>Minimarket</strong></a>
@@ -78,17 +78,17 @@ if (! isset($_SESSION["login"])) {
 	<div style="margin-top: 160px">
 		<div style="margin-top: 55px; margin-right: 20px; margin-bottom: 5px;">
 			<?php
-session_start();
 if (! isset($_SESSION["login"])) {
-    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
+    echo "<div style='text-align:right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
 } else {
     if ($_SESSION["admin"] != 0) {
-        echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10;'>+ Añadir producto</a>";
+        echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10; float:left;'>+ Añadir producto</a>";
     }
-    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='carrito.php'>Carrito</a></div>";
+    echo "<div style='text-align:right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='perfil.php'>Perfil</a> | <a href='carrito.php'>Carrito</a></div>";
 }
 ?>
-			<table class="table" style="width: 100%; text-align: center;">
+<div class="container" style="margin-top: 40px;">
+				<table class="table" style="width: 100%; text-align: center;">
 <?php
 // Conexion con la base de datos
 $user = "root";
@@ -104,9 +104,33 @@ if (! $conn) {
 
 $sql = "SELECT * FROM usuarios WHERE id=" . $_SESSION["login"];
 $resultado = $conn->query($sql);
+if ($resultado->num_rows > 0) {
+    while ($row = $resultado->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td><h4>DNI: " . $row["dni"] . "</h4></td>";
+        echo "<td><h4>Nombre: " . $row["nombre"] . "</h4></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td><h4>Apellidos: " . $row["apellidos"] . "</h4></td>";
+        echo "<td><h4>Email: " . $row["email"] . "</h4></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td><h4>Dirección: " . $row["direccion"] . "</h4></td>";
+        echo "<td><h4>Ciudad: " . $row["ciudad"] . "</h4></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td colspan='2'><h4>CP: " . $row["CP"] . "</h4></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td><h4><a class='btn btn-secondary btn-lg' href='editarPerfil.php'>Editar perfil</a></h4></td>";
+        echo "<td><h4><a class='btn btn-secondary btn-lg' href='#' onclick='confirmar(" . $row["id"] . ")'>Darse de baja</h4></td>";
+        echo "</tr>";
+    }
+}
 ?>
 			</table>
-
+			<br> <br> <br> <br> <a href="index.php"><h5><-- Atrás</h5></a>
+			</div>
 		</div>
 	</div>
 	<!-- Fin contenido -->
@@ -153,5 +177,16 @@ $resultado = $conn->query($sql);
 		<!-- Copyright -->
 	</footer>
 	<!-- Footer -->
+	<script>
+		//Función de confirmación para eliminar producto
+		function confirmar(id)
+		{
+		var agree=confirm("Deseas eliminar este usuario?");
+		if (agree)
+			window.location.href = "delUsuario.php?id="+id;
+		else
+			window.location.href = "perfil.php";
+		}
+	</script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
-<title>Añadir Producto</title>
+<title>Supermercado</title>
 <!-- Bootstrap -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -24,11 +24,8 @@
 </head>
 <body style="background-color: #F7F7F7;">
 <?php
-// Evita entrar a funcion de administrador a no admin
 session_start();
 if (! isset($_SESSION["login"])) {
-    header("Location: index.php");
-} else if ($_SESSION["admin"] != 1) {
     header("Location: index.php");
 }
 ?>
@@ -84,50 +81,70 @@ if (! isset($_SESSION["login"])) {
 if (! isset($_SESSION["login"])) {
     echo "<div style='text-align:right; margin-right: 10;'><a href='login.php'>Log in</a> | <a href='registrar.php'>Registrarse</a></div>";
 } else {
-    echo "<div style='text-align:right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='carrito.php'>Carrito</a></div>";
+    if ($_SESSION["admin"] != 0) {
+        echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10; float:left;'>+ Añadir producto</a>";
+    }
+    echo "<div style='text-align:right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='perfil.php'>Perfil</a> | <a href='carrito.php'>Carrito</a></div>";
 }
 ?>
-	</div>
-		<div class="container"
-			style="max-width: 700px; margin-left: auto; margin-right: auto; border: 1px solid black; border-radius: 5px; background-color: white;">
-			<form action="addProducto.php" method="post"
-				style="margin-top: 15px;" enctype="multipart/form-data">
-				<input type="hidden" name="MAX_FILE_SIZE" value="5120000" /> <label
-					for="imagen">Imagen:</label> <input type="file" name="imagen"> <br>
-				<br> <label for="producto">Producto:</label> <input
-					class="form-control" type="text" name="producto" required><br> <br>
-				<label for="categoria">Categoría:</label> <select name="categoria"
-					class="form-control">
-					<option value="1">Tecnología</option>
-					<option value="2">Alimentos</option>
-					<option value="3">Textiles</option>
-					<option value="4">Videojuegos</option>
-					<option value="5">Juguetes</option>
-					<option value="6">Higiene</option>
-				</select> <br> <br> <label for="precio">Precio:</label> <input
-					class="form-control" type="number" name="precio" step="any"
-					required><br> <br> <label for="stock">Stock:</label> <input
-					class="form-control" type="number" name="stock" required><br> <br>
-				<input class='btn btn-secondary btn-lg btn-block' type='submit'
-					value='Añadir'>
-			</form>
-		</div>
-		<div class="container" style="text-align: center; margin-top: 10px;">
-		<?php
-if (isset($_GET["exito"])) {
-    echo "<h3 style='color: green;'>Se ha registrado el producto</h3>";
-} else if (isset($_GET["error"])) {
-    echo "<h3 style='color: red;'>Ha ocurrido un error</h3>";
-}
-?>
-		</div>
+			</div>
 	</div>
 	<div class="container">
-		<a href="index.php"><h5><-- Atrás</h5></a>
+	<?php
+// Conexion con la base de datos
+$user = "root";
+$pass = "";
+$server = "localhost";
+$db = "proyecto";
+
+$conn = mysqli_connect($server, $user, $pass, $db);
+
+if (! $conn) {
+    die("Ha ocurrido un error");
+}
+
+// Recogida datos GET
+$id = $_SESSION["login"];
+
+// Query
+$sql = "SELECT * FROM usuarios WHERE id=" . $id;
+$resultado = $conn->query($sql);
+
+// Muestra de formulario
+if ($resultado->num_rows > 0) {
+    while ($row = $resultado->fetch_assoc()) {
+        echo "<form action='editPerfil.php' method='post' style='margin-top: 15px;'>
+			<h4>
+				<label for='dni'>DNI:</label> <input class='form-control'
+					type='text' name='dni' required value=" . $row["dni"] . "><br> <label for='nombre'>Nombre:</label>
+				<input class='form-control' type='text' name='nombre' required value=" . $row["nombre"] . "><br>
+				<label for='apellidos'>Apellidos:</label> <input
+					class='form-control' type='text' name='apellidos' required value=" . $row["apellidos"] . "><br> <label
+					for='email'>Email:</label> <input class='form-control' type='text'
+					name='email' required value=" . $row["email"] . "><br> <label for='direccion'>Dirección:</label>
+				<input class='form-control' type='text' name='direccion' required value=" . $row["direccion"] . "><br>
+				<label for='ciudad'>Ciudad:</label> <input class='form-control'
+					type='text' name='ciudad' required value=" . $row["ciudad"] . "><br> <label for='cp'>CP:</label>
+				<input class='form-control' type='number' name='cp' required value=" . $row["CP"] . "><br> <label
+					for='usuario'>Usuario:</label> <input class='form-control'
+					type='text' name='usuario' required value=" . $row["usuario"] . "><br> <label for='pass'>Contraseña:</label>
+				<input class='form-control' type='password' name='pass' required><br>
+				<input class='btn btn-secondary btn-lg btn-block' type='submit'
+					value='Editar'>
+			</h4>
+		</form>";
+    }
+}
+?>
+<?php
+if (isset($_GET["error"])) {
+    echo "<h3 style='color:red; text-align:center;'>Ha ocurrido un error</h3>";
+}
+?>
 	</div>
-	<!-- Fin contenido -->
 	<!-- Footer -->
-	<footer class="bg-dark text-center text-white">
+	<footer class="bg-dark text-center text-white"
+		style="margin-top: 30px;">
 		<!-- Grid container -->
 		<div class="container p-4 pb-0">
 			<!-- Section: Social media -->
@@ -168,5 +185,6 @@ if (isset($_GET["exito"])) {
 		<!-- Copyright -->
 	</footer>
 	<!-- Footer -->
+
 </body>
 </html>

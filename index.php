@@ -2,6 +2,13 @@
 <head>
 <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 <title>Supermercado</title>
+<style type="text/css">
+.product-table {
+	width: 100%;
+	height: 700px;
+	overflow: scroll;
+}
+</style>
 <!-- Bootstrap -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -25,7 +32,7 @@
 <body style="background-color: #F7F7F7;">
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
-		src="imagenes/supermercado.png" style="width: 100%; height: 100">
+		src="imagenes/supermercado.jpg" style="width: 100%; height: 100">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
 		style="margin-top: 100px">
 		<a class="navbar-brand" href="index.php"><strong>Minimarket</strong></a>
@@ -83,7 +90,9 @@ if (! isset($_SESSION["login"])) {
 }
 ?>
 		</div>
-		<table id="pagina1" class="table" style="width: 100%; text-align: center;">
+		<div class="product-table">
+			<table id="pagina1" class="table"
+				style="width: 100%; text-align: center;">
 			<?php
 
 // Conexion con la base de datos
@@ -119,7 +128,7 @@ if ($resultado->num_rows > 0) {
 // Mostrar los resultados
 echo "<tr>";
 for ($i = 1; $i < $a; $i ++) {
-    echo "<td><a href='producto.php?id=" . $id[$i] . "'><img alt='PRODUCTO.JPG' style='width: 100px; height: 100px;' src='imagenes/" . $imagenes[$i] . "'><br>" . $productos[$i] . "</a></td>";
+    echo "<td class='col-2'><a href='producto.php?id=" . $id[$i] . "'><img alt='PRODUCTO.JPG' style='width: 100px; height: 100px;' src='imagenes/" . $imagenes[$i] . "'><br>" . $productos[$i] . "</a></td>";
     if ($i % 5 == 0 && $i != 0) {
         echo "</tr>";
     }
@@ -127,10 +136,11 @@ for ($i = 1; $i < $a; $i ++) {
 $conn->close();
 ?>
 		</table>
+		</div>
 	</div>
 	<!-- Fin contenido -->
 	<!-- Footer -->
-	<footer style="margin-top: 250px;" class="bg-dark text-center text-white">
+	<footer class="bg-dark text-center text-white">
 		<!-- Grid container -->
 		<div class="container p-4 pb-0">
 			<!-- Section: Social media -->
@@ -166,8 +176,7 @@ $conn->close();
 		<!-- Copyright -->
 		<div class="text-center p-3"
 			style="background-color: rgba(0, 0, 0, 0.2);">
-			© 2021 Copyright: <a class="text-white"
-				href="#">Supermercado</a>
+			© 2021 Copyright: <a class="text-white" href="#">Supermercado</a>
 		</div>
 		<!-- Copyright -->
 	</footer>

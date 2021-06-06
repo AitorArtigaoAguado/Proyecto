@@ -33,7 +33,7 @@ if (isset($_SESSION["login"])) {
 ?>
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
-		src="imagenes/supermercado.png" style="width: 100%; height: 100">
+		src="imagenes/supermercado.jpg" style="width: 100%; height: 100">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
 		style="margin-top: 100px">
 		<a class="navbar-brand" href="index.php"><strong>Minimarket</strong></a>
@@ -100,11 +100,11 @@ if (isset($_GET["error"])) {
 }
 ?>
 	<div class="container">
-		<a href="index.php"><h5><-- Atrás</h5></a>
+		<br><br><a href="index.php"><h5><-- Atrás</h5></a>
 	</div>
 	<!-- Fin contenido -->
 	<!-- Footer -->
-	<footer class="bg-dark text-center text-white">
+	<footer class="bg-dark text-center text-white" style="margin-top: 200px;">
 		<!-- Grid container -->
 		<div class="container p-4 pb-0">
 			<!-- Section: Social media -->

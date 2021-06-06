@@ -2,6 +2,13 @@
 <head>
 <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 <title>Supermercado</title>
+<style type="text/css">
+.product-table {
+	width: 100%;
+	height: 700px;
+	overflow: scroll;
+}
+</style>
 <!-- Bootstrap -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -33,7 +40,7 @@ if (! isset($_SESSION["login"])) {
 ?>
 	<!-- Cabecera -->
 	<img class="fixed-top" alt="SUPERMERCADO.JPG"
-		src="imagenes/supermercado.png" style="width: 100%; height: 100">
+		src="imagenes/supermercado.jpg" style="width: 100%; height: 100">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
 		style="margin-top: 100px">
 		<a class="navbar-brand" href="index.php"><strong>Minimarket</strong></a>
@@ -86,19 +93,20 @@ if (! isset($_SESSION["login"])) {
     if ($_SESSION["admin"] != 0) {
         echo "<a href='nuevoProducto.php' style='text-align:left; margin-left: 10;'>+ Añadir producto</a>";
     }
-    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='logout.php'>Log out</a></div>";
+    echo "<div style='text-align:right; float: right; margin-right: 10;'><a href='logout.php'>Log out</a> | <a href='perfil.php'>Perfil</a></div>";
 }
 ?>
 		</div>
-		<table class="table" style="width: 100%; text-align: center;">
-			<tr>
-				<th></th>
-				<th>Producto</th>
-				<th>Categoría</th>
-				<th>Precio individual</th>
-				<th>Cantidad</th>
-				<th>Precio final</th>
-			</tr>
+		<div class="product-table">
+			<table class="table" style="width: 100%; text-align: center;">
+				<tr>
+					<th></th>
+					<th>Producto</th>
+					<th>Categoría</th>
+					<th>Precio individual</th>
+					<th>Cantidad</th>
+					<th>Precio final</th>
+				</tr>
 			<?php
 $cookie_name = "comprar";
 $cookie_value = $_SESSION["login"];
@@ -148,6 +156,7 @@ if (! isset($_COOKIE["comprar"])) {
 }
 ?>
 		</table>
+		</div>
 	</div>
 	<div style="float: right; margin-right: 50px;">
 		<a class="btn btn-secondary btn-lg" href="comprar.php"
@@ -158,7 +167,8 @@ if (! isset($_COOKIE["comprar"])) {
 	</div>
 	<!-- Fin contenido -->
 	<!-- Footer -->
-	<footer style="margin-top: 250px;" class="bg-dark text-center text-white">
+	<footer style="margin-top: 250px;"
+		class="bg-dark text-center text-white">
 		<!-- Grid container -->
 		<div class="container p-4 pb-0">
 			<!-- Section: Social media -->
